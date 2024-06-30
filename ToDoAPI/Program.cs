@@ -1,11 +1,13 @@
 using Infra.Mapper;
 using Microsoft.OpenApi.Models;
 using Infra.IoC;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.RegisterRepositoryServices();
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>

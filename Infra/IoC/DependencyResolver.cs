@@ -1,4 +1,7 @@
-﻿using Domain.Interface;
+﻿using Domain.DTO;
+using Domain.Interface;
+using Domain.Validator;
+using FluentValidation;
 using Infra.Business;
 using Infra.Repositories.Base;
 using Infra.Repositories.ToDoRepository;
@@ -18,6 +21,7 @@ namespace Infra.IoC
             services.AddScoped<IToDo, ToDoBusiness>();
             services.AddScoped<IBaseRepository, BaseRepository>();
             services.AddScoped<IToDoRepository, ToDoRepository>();
+            services.AddTransient<IValidator<ToDoDTO>, ToDoDTOValidator>();
         }
     }
 }
