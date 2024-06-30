@@ -37,12 +37,12 @@ namespace Infra.Repositories.ToDoRepository
             return _baseRepository.Query<ToDo>("ToDoList", parameters);
         }
 
-        public bool ToDoUpdate(ToDo toDo)
+        public bool ToDoUpdate(int id, ToDoDTO toDoDTO)
         {
             DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("ID", toDo.Id);
-            parameters.Add("Note", toDo.Note);
-            parameters.Add("Concluded", toDo.Concluded);
+            parameters.Add("ID", id);
+            parameters.Add("Note", toDoDTO.Note);
+            parameters.Add("Concluded", toDoDTO.Concluded);
 
             return _baseRepository.Execute("ToDoUpdate", parameters);
         }

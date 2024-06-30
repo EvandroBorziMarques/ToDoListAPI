@@ -38,9 +38,9 @@ namespace Infra.Business
             return toDo;
         }
 
-        public bool ToDoUpdate(ToDo toDo)
+        public bool ToDoUpdate(int id, ToDoDTO toDoDTO)
         {
-            bool response = _toDoRepository.ToDoUpdate(toDo);
+            bool response = _toDoRepository.ToDoUpdate(id, toDoDTO);
             return response;
         }
 

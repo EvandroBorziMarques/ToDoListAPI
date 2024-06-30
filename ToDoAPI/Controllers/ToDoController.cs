@@ -20,10 +20,10 @@ namespace ToDoAPI.Controllers
         }
 
         /// <summary>
-        /// Create new To Do
+        /// Create new to do
         /// </summary>
         /// <returns></returns>
-        [HttpPost("create")]
+        [HttpPost()]
         [Produces("application/json")]
         [ProducesResponseType(typeof(ToDoDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -45,7 +45,7 @@ namespace ToDoAPI.Controllers
         /// Get list of to do
         /// </summary>
         /// <returns></returns>
-        [HttpGet("list")]
+        [HttpGet()]
         [Produces("application/json")]
         [ProducesResponseType(typeof(ToDoDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -89,18 +89,19 @@ namespace ToDoAPI.Controllers
         /// <summary>
         /// Update information of the to do
         /// </summary>
-        /// <param name="toDo"></param>
+        /// <param name="id"></param>
+        /// <param name="toDoDTO"></param>
         /// <returns></returns>
-        [HttpPut("update")]
+        [HttpPut("{id}")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(ToDo), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<ToDoDTO> ToDoUpdate([FromBody] ToDo toDo)
+        public ActionResult<ToDoDTO> ToDoUpdate(int id, [FromBody] ToDoDTO toDoDTO)
         {
             try
             {
-                bool response = _toDo.ToDoUpdate(toDo);
+                bool response = _toDo.ToDoUpdate(id, toDoDTO);
 
                 return response ? Ok("Updated Successfuly!") : BadRequest("Error: to do not found!");
             }
@@ -114,9 +115,8 @@ namespace ToDoAPI.Controllers
         /// Delete to do
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="toDoDTO"></param>
         /// <returns></returns>
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("{id}")]
         [Produces("application/json")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

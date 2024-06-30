@@ -8,7 +8,7 @@ namespace Domain.Interface
         bool ToDoCreate(ToDoDTO toDoDTO);
         List<ToDo> ToDoList();
         ToDo ToDoGetById(int id);
-        bool ToDoUpdate(ToDo toDo);
+        bool ToDoUpdate(int id, ToDoDTO toDoDTO);
         bool ToDoDelete(int id);
     }
 }
