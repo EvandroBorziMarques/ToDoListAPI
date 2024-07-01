@@ -25,3 +25,7 @@ Tecnologias usadas para construir a aplicação
 - SqlServer
 
 ## Na pasta "Database" está o arquivo "Script.sql" com os comandos de criação do banco de dados, tabelas e procedures.
+
+Para maior facilidade de conexão (API e Banco de dados), ao criar o banco local, crie: 
+ - ID usuário: sa
+ - senha: 1q2w3e4r@#$
